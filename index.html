@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicker Absurdo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      color: #333;
+    }
+    #clicker {
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #ffcc00;
+      border: 2px solid #333;
+      border-radius: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    #score {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    /* Adicionando estilos para os upgrades */
+    #upgrades {
+      margin-top: 20px;
+    }
+    .upgrade {
+      margin: 10px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .upgrade:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Clicker Absurdo</h1>
+  <div id="clicker">Clique aqui!</div>
+  <div id="score">Pontuação: 0</div>
+  <div id="level">Nível: 1</div>
+  <div id="upgrades">
+    <button class="upgrade" id="upgrade1" disabled>Upgrade 1 (Custa 10 pontos)</button>
+    <button class="upgrade" id="upgrade2" disabled>Upgrade 2 (Custa 50 pontos)</button>
+    <button class="upgrade" id="upgrade3" disabled>Upgrade 3 (Dobra os pontos por clique, custa 100 pontos)</button>
+  </div>
+  <div id="messageBox" style="display: none; margin-top: 10px; color: green; font-weight: bold;"></div>
+  <div id="story" style="margin-top: 20px; font-size: 18px; color: #555;">
+    <p>Você é um aventureiro em um mundo mágico onde cada clique representa um passo em sua jornada. Ao acumular pontos, você desbloqueia habilidades e equipamentos que o ajudam a enfrentar desafios ainda maiores. Suba de nível, adquira upgrades e torne-se uma lenda neste reino fantástico!</p>
+  </div>
+  <div id="missions" style="margin-top: 20px; font-size: 16px; color: #333;">
+    <h2>Missões</h2>
+    <ul>
+      <li id="mission1">Clique 50 vezes (Recompensa: 20 pontos)</li>
+      <li id="mission2" style="display: none;">Alcance o nível 5 (Recompensa: 50 pontos)</li>
+    </ul>
+  </div>
+  <div id="achievements" style="margin-top: 20px; font-size: 16px; color: #333;">
+    <h2>Conquistas</h2>
+    <ul>
+      <li id="achievement1">100 cliques (Desbloqueado: Não)</li>
+      <li id="achievement2">Nível 10 (Desbloqueado: Não)</li>
+    </ul>
+  </div>
+
+  <div id="shop" style="margin-top: 20px; font-size: 16px; color: #333;">
+    <h2>Loja</h2>
+    <button id="item1" disabled>Item 1: Aumenta pontos por clique (Custa 30 pontos)</button>
+    <button id="item2" disabled>Item 2: Reduz custo de upgrades (Custa 100 pontos)</button>
+  </div>
+
+  <div id="stats" style="margin-top: 20px; font-size: 16px; color: #333;">
+    <h2>Estatísticas</h2>
+    <p id="totalClicks">Cliques Totais: 0</p>
+    <p id="timePlayed">Tempo Jogado: 0 segundos</p>
+  </div>
+
+  <div id="events" style="margin-top: 20px; font-size: 16px; color: #333;">
+    <h2>Eventos Aleatórios</h2>
+    <p id="eventMessage">Nenhum evento ativo no momento.</p>
+  </div>
+
+  <div id="charts" style="margin-top: 20px;">
+    <h2>Gráfico de Pontuação</h2>
+    <canvas id="scoreChart" width="400" height="200"></canvas>
+  </div>
+
+  <audio id="backgroundMusic" loop>
+    <source src="background-music.mp3" type="audio/mpeg">
+    Seu navegador não suporta o elemento de áudio.
+  </audio>
+  <button id="toggleMusic">Ativar Música</button>
+  <script src="script.js"></script>
+</body>
+</html>
